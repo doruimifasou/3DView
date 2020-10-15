@@ -1,0 +1,106 @@
+{
+	"tb": {
+		"navigation_opt": "Navigation",
+		"rendering_opt": "显示",
+		"tools_opt": "工具",
+		"measurments_opt": "测量",
+		"clipping_opt": "裁剪",
+		"annotations_opt": "Annotations",
+		"materials_opt": "Materials",
+		"scene_opt": "场景",
+		"classification_filter_opt": "分类过滤器",
+		"filters_opt": "过滤器",
+		"parameters_opt": "Other settings",
+		"about_opt": "About"
+	},
+	"tt": {
+		"angle_measurement": "角度测量",
+		"point_measurement": "点测量",
+		"distance_measurement": "距离测量",
+		"height_measurement": "高度测量",
+		"circle_measurement": "圆周测量",
+		"area_measurement": "面积测量",
+		"volume_measurement": "体积测量",
+		"height_profile": "高度采样",
+		"annotation": "标注",
+		"clip_volume": "体积裁剪",
+		"clip_polygon": "多边形裁剪",
+		"screen_clip_box": "Draw a selection box. Requires you to be in orthographic camera mode!",
+		"clip_plane_x": "Clip plane on x axis",
+		"clip_plane_y": "Clip plane on y axis",
+		"clip_plane_z": "Clip plane on z axis",
+		"remove_all_measurement": "清除测量",
+		"left_view_control": "左视图",
+		"right_view_control": "右视图",
+		"front_view_control": "前视图",
+		"back_view_control": "后视图",
+		"top_view_control": "顶视图",
+		"bottom_view_control": "底视图",
+		"focus_control": "Full extent",
+		"orbit_control": "Orbit control",
+		"flight_control": "Fly control",
+		"heli_control": "Helicopter control",
+		"earth_control": "Earth control",
+		"perspective_camera_control": "Perspective camera",
+		"orthographic_camera_control": "Orthographic camera",
+		"navigation_cube_control": "Navigation cube",
+		"remove_all_clipping_volumes": "Remove all clipping volumes",
+		"compass": "Compass",
+		"camera_animation": "相机动画"
+	},
+	"appearance": {
+		"nb_max_pts": "点数限制",
+		"point_size": "点尺寸",
+		"min_point_size": "最小尺寸",
+		"point_opacity": "不透明度",
+		"field_view": "视场",
+		"point_size_type": "点尺寸类型",
+		"point_material": "材质",
+		"elevation_range": "Elevation range",
+		"extra_range": "Scalar range",
+		"point_quality": "质量",
+		"point_shape": "形状",
+		"edl_radius": "半径",
+		"edl_strength": "强度",
+		"edl_opacity": "不透明度",
+		"edl_enable": "开启",
+		"min_node_size": "最小节点尺寸",
+		"clip_mode": "裁剪模式",
+		"move_speed": "Speed",
+		"skybox": "Sky",
+		"bottom_lock": "Keep above ground",
+		"box": "索引盒",
+		"length_unit": "Length unit",
+		"freeze": "锁定数据",
+		"language": "Language",
+		"backface_culling": "Backface Culling"
+	},
+	"measurements": {
+		"clip": "clip",
+		"show": "show volume"
+	},
+	"annotations": {
+		"show3D": "show in 3D",
+		"showMap": "show on map"
+	},
+	"profile": {
+		"nb_points": "Number of Points",
+		"title": "Height profile",
+		"save_las": "Save LAS(3D)",
+		"save_ortho": "Save CSV(2D)"
+	},
+	"scene": {
+		"camera_position": "Camera Position",
+		"camera_target": "Camera Target"
+	},
+	"filters": {
+		"return_number": "Return Number",
+		"number_of_returns": "Number of Returns",
+		"gps_min": "min",
+		"gps_max": "max",
+		"gps_time": "GPS Time"
+	},
+	"settings": {
+		"language": "语言"
+	}
+}

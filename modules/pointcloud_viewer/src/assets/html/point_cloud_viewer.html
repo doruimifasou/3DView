@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Potree Viewer</title>
+
+    <link rel="stylesheet" type="text/css" href="../build/potree/potree.css">
+    <link rel="stylesheet" type="text/css" href="../libs/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="../libs/openlayers3/ol.css">
+    <link rel="stylesheet" type="text/css" href="../libs/spectrum/spectrum.css">
+    <link rel="stylesheet" type="text/css" href="../libs/jstree/themes/mixed/style.css">
+</head>
+
+<body>
+<script src="../libs/jquery/jquery-3.1.1.min.js"></script>
+<script src="../libs/spectrum/spectrum.js"></script>
+<script src="../libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="../libs/three.js/build/three.min.js"></script>
+<script src="../libs/three.js/extra/lines.js"></script>
+<script src="../libs/other/BinaryHeap.js"></script>
+<script src="../libs/tween/tween.min.js"></script>
+<script src="../libs/d3/d3.js"></script>
+<script src="../libs/proj4/proj4.js"></script>
+<script src="../libs/openlayers3/ol.js"></script>
+<script src="../libs/i18next/i18next.js"></script>
+<script src="../libs/jstree/jstree.js"></script>
+<script src="../build/potree/potree.js"></script>
+<script src="../libs/plasio/js/laslaz.js"></script>
+<script src="../libs/other/stats.js"></script>
+<script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+<!-- INCLUDE ADDITIONAL DEPENDENCIES HERE -->
+<!-- INCLUDE SETTINGS HERE -->
+
+<div class="potree_container" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px; ">
+    <div id="potree_render_area"
+         style="background-image: url('../build/potree/resources/images/background.jpg');"></div>
+    <div id="potree_sidebar_container"></div>
+
+</div>
+<div id="potree_stat_container" style="position: absolute;left:480px;top:0;width:150px;height:80px"></div>
+<script>
+    var widget;
+    $(document).ready(function () {
+        //
+        new QWebChannel(qt.webChannelTransport,
+            function (channel) {
+                //
+                widget = channel.objects.widget;
+                //
+            }
+        );
+    });
+
+    /**
+     *
+     * @param url
+     * @param name
+     */
+    function addPointCloud(url, name) {
+        Potree.loadPointCloud(url, name, function (e) {
+            viewer.scene.addPointCloud(e.pointcloud);
+
+            let material = e.pointcloud.material;
+            material.size = 1;
+            material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+            //let attribute = e.pointcloud.getAttribute("intensity");
+            //let attribute2 = e.pointcloud.getAttribute("intensity gradient");
+            material.activeAttributeName = 'intensity gradient';
+            material.intensityRange = [5082, 65535];
+            material.gradient = Potree.Gradients['SPECTRAL'];
+            material.intensityBrightness=0.0;
+            material.intensityContrast=0.0;
+            //
+            let box = viewer.getBoundingBox([e.pointcloud]);
+            let node = new THREE.Object3D();
+            node.boundingBox = box;
+            viewer.zoomTo(node, 1, 500);
+        });
+    }
+</script>
+<script>
+
+    // import * as Potree from "../src/Potree.js";
+
+    window.viewer = new Potree.Viewer(document.getElementById("potree_render_area"));
+
+    viewer.setEDLEnabled(true);
+    viewer.setFOV(60);
+    viewer.setPointBudget(5 * 1000 * 1000);
+    viewer.loadSettingsFromURL();
+
+    viewer.setDescription("");
+
+    viewer.loadGUI().then(() => {
+        viewer.setLanguage('zh');
+        // $("#menu_filters").next().show();
+        //viewer.toggleSidebar();
+    });
+
+    // Potree.loadPointCloud("http://5.9.65.151/mschuetz/potree/resources/pointclouds/opentopography/CA13_1.4/cloud.js", "CA13", function(e){
+    //     viewer.scene.addPointCloud(e.pointcloud);
+    //     e.pointcloud.position.z = 0;
+    //     let material = e.pointcloud.material;
+    //     material.size = 0.8;
+    //     material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+    //     material.activeAttributeName = "rgba";
+    //
+    //     viewer.scene.view.setView(
+    //         [694517.403, 3899262.595, 10642.698],
+    //         [694878.410, 3916332.067, 14.497],
+    //     );
+    // });
+    // Lion
+    // Potree.loadPointCloud("../pointclouds/lion_takanawa/cloud.js", "lion", function (e) {
+    //     viewer.scene.addPointCloud(e.pointcloud);
+    //
+    //     let material = e.pointcloud.material;
+    //     material.size = 1;
+    //     material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+    //
+    //     viewer.fitToScreen();
+    // });
+</script>
+
+
+</body>
+</html>
